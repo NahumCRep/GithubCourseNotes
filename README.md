@@ -403,7 +403,9 @@ La ejecución del comando predeterminado puede producir un error. La configuraci
 # Git Cherry-pick
 
 Es un comando que permite tomar uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad en la rama master sin necesidad de hacer un merge.
-
+<pre>
+<code>$ cherry-pick commit-ID</code>
+</pre>
 
 
 
