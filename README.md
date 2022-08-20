@@ -1,7 +1,12 @@
 # Notas del Curso de Github
 
 Índice
+- [Inicializar Repositorio](#Inicializar-Repositorio)
+- [Confinguracion](#Confinguracion)
 - [Establecer Repositorio Remoto]( #Establecer-Repositorio-Remoto)
+- [Ver origen del Respositorio](#Ver-origen-del-Respositorio)
+- [Comandos sobre un archivo](#Comandos-sobre-un-archivo)
+  - [Estados de un archivo](#Estados-de-un-archivo)
 
 # Inicializar Repositorio
 
@@ -41,7 +46,7 @@ para poder ver estos datos entre otros se utiliza el comando
 $ git banch -M main</code>
 </pre>
 
-# Ver url del repositorio origen
+# Ver origen del Respositorio
 <pre>
 <code>$ git remote -v</code>
 </pre>
@@ -66,6 +71,22 @@ Agregar todos los archivos
 <pre>
 <code>$ git add .</code>
 </pre>
+
+# Commit 
+
+Luego de agregar el archivo al stagin area debemos agregarlo al repositorio para eso utilzando **git commit**
+
+<pre>
+<code>$ git commit -m "mensaje"</code>
+</pre>
+
+Si queremos agregar el archivo y a la vez hacer commit utilizamos 
+
+<pre>
+<code>$ git commit -am "mensaje"</code>
+</pre>
+
+_Nota: **-am** funciona con archivos **tracked** (rastreados) en caso de ser un archivo nuevo tiene que utilizarse el comand **git add**_
 
 ## Comando **git rm**
 El comando **git rm** quita un archivo o grupo de archivos de un repositorio de Git. Se elimina un archivo tanto del equipo como del repositorio de Git.
@@ -244,6 +265,26 @@ $ git push origin :refs/tags/nombre-del-tag</code></pre>
 # Forks (Github)
 
 Los forks o bifurcaciones son una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub. Este repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio). En pocas palabras, lo podremos utilizar como un nuevo repositorio git cualquiera
+
+# Añadir otra fuente remota
+
+<pre>
+<code>$ git remote add nombre-cualquiera URL-Repositorio</code>
+</pre>
+por ejemplo
+<pre>
+<code>$ git remote add upstream https://github.com/ExampleRep/Example.git</code>
+</pre>
+
+Con esto podriamos tener un repositorio Fork como **origin** y el repositorio original en **upstream** para obtener los cambios que este reciba para que nuestro Fork no se quede atras. O no necesariamente con repositorios Fork, sino donde se requiera tener mas de una fuente remota.
+
+# Rebase
+
+Rebase es el proceso de mover o combinar una secuencia de confirmaciones en una nueva confirmación base. Reescribe la historia del repositorio, cambia la historia de donde comenzó la rama y solo debe ser usado de manera local ya que hacerlo a un repositorio remoto no se considera buena practica.
+
+
+
+
 
 
 
