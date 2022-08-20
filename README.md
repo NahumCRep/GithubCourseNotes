@@ -282,6 +282,26 @@ Con esto podriamos tener un repositorio Fork como **origin** y el repositorio or
 
 Rebase es el proceso de mover o combinar una secuencia de confirmaciones en una nueva confirmación base. Reescribe la historia del repositorio, cambia la historia de donde comenzó la rama y solo debe ser usado de manera local ya que hacerlo a un repositorio remoto no se considera buena practica.
 
+Primero tenemos que hacer rebase a la rama experimental
+
+<pre>
+<code>$ git checkout feature
+$ git rebase main</code>
+</pre>
+
+y luego hacemos rebase a la rama main
+
+<pre>
+<code>$ git checkout main
+$ git rebase feature</code>
+</pre>
+
+A nivel de historia del log la rama feature no exitió, por eso no es buena practica en repositorios remotos ya que es mejor que la historia quede intacta.
+
+# Git Stash
+
+
+
 
 
 
