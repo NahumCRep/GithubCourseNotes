@@ -1,6 +1,6 @@
 hola
 buenas
-texto en main
+texto en test
 Texto agregado en la rama test
 Experimento 1
 Experimento 2
