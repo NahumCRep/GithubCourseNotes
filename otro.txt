@@ -1,3 +1,8 @@
 hola
 buenas
+<<<<<<< HEAD
 texto en main
+=======
+
+Texto agregado en la rama test
+>>>>>>> test
