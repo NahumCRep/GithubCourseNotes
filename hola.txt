@@ -1,6 +1,1 @@
-hola
-como estas
-otro texto
-
-Probando rebase
-Texto en main
+Nuevo mensaje en hola
