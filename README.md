@@ -1,3 +1,8 @@
+# Notas del Curso de Github
+
+Índice
+- [Establecer Repositorio Remoto]( #Establecer-Repositorio-Remoto)
+
 # Inicializar Repositorio
 
 <pre>
@@ -138,6 +143,10 @@ Para forzar la eliminacion en caso de algun error
 <pre>
 <code>$ git branch -D nombre-rama</code>
 </pre>
+Eliminar rama del repositorio remoto
+<pre>
+<code>$ git push origin :nombre-rama</code>
+</pre>
 
 ## Git Merge
 
@@ -231,6 +240,13 @@ otra forma con mas detalles
 ## Borrar tag del repositorio remoto
 <pre><code>$ git tag -d nombre-del-tag
 $ git push origin :refs/tags/nombre-del-tag</code></pre>
+
+# Forks (Github)
+
+Los forks o bifurcaciones son una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub. Este repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio). En pocas palabras, lo podremos utilizar como un nuevo repositorio git cualquiera
+
+
+
 
 
 
