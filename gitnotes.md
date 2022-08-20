@@ -13,6 +13,12 @@
 $ git config --global user.email "example@gmail.com"</code>
 </pre>
 
+para poder ver estos datos entre otros se utiliza el comando
+<pre>
+<code>$ git config -l</code>
+</pre>
+
+
 # Establecer Repositorio Remoto
 
  - **Cambiar nombre de la rama de Master a Main**
@@ -103,3 +109,77 @@ $ git reset HEAD</code>
 </pre>
 
 **reset HEAD** es el comando para sacar archivos del área de staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
+
+# **Branches (Ramas)**
+
+## Crear rama
+
+Para crear una rama se puede de hacer de dos formas
+<pre>
+<code>$ git branch nombre-rama</code>
+</pre>
+Para crear la rama y al mismo tiempo acceder a la rama se utliza:
+<pre>
+<code>$ git checkout -b nombre-rama</code>
+</pre>
+
+## Eliminar rama
+
+Para eliminar un rama local
+<pre>
+<code>$ git branch -d nombre-rama</code>
+</pre>
+Para forzar la eliminacion en caso de algun error
+<pre>
+<code>$ git branch -D nombre-rama</code>
+</pre>
+
+## Git Merge
+
+Pasar los cambios de una rama a otra
+<pre>
+<code>$ git rama-destino merge rama-con-cambios</code>
+</pre>
+
+# 
+<pre>
+<code>$ git pull origin main --allow-unrelated-histories</code>
+</pre>
+
+#
+#
+#
+# Configurar SSH
+
+## Generar llave SSH
+
+<pre>
+<code>ssh-keygen -t rsa -b 4096 -C "tu-correo@email.com"</code>
+</pre>
+donde:
+- **-t**  : se utiliza para seleccionar el algoritmo
+- **-b**  : se utiliza para establecer el tamaño de la clave
+- **rsa** : un antiguo algoritmo basado en la dificultad de factorizar grandes números. Se recomienda un tamaño de clave de al menos 2048 bits para RSA; 4096 bits es mejor.
+- **-C**  : para establecer el correo electronico
+
+## Encender el “servidor” de llaves SSH de tu computadora (windows y linux)
+
+<pre>
+<code>eval $(ssh-agent -s)</code>
+</pre>
+
+## Añadir tu llave SSH a este “servidor”
+
+<pre>
+<code>ssh-add ruta-donde-guardaste-tu-llave-privada</code>
+</pre>
+Supuniendo que se guardo en la ruta home del computador podemos usar 
+<pre>
+<code>~ -> este contiene la ruta del home
+ssh-add ~/.ssh/id_rsa</code>
+</pre>
+
+
+
+
+
