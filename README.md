@@ -141,6 +141,18 @@ $ git reset HEAD</code>
 
 **reset HEAD** es el comando para sacar archivos del área de staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
 
+Para moverse a un commit anterior a HEAD con:
+<pre>
+<code>$ git reset HEAD^ 
+$ git reset HEAD~1
+$ git reset --hard 'HEAD@{1}'</code>
+</pre>
+
+Para moverse dos commits anteriores a HEAD con:
+<pre>
+<code>$ git reset HEAD~2</code>
+</pre>
+
 # **Branches (Ramas)**
 
 ## Crear rama
@@ -311,8 +323,86 @@ El stashed nos permite cambiar de ramas, hacer cambios, trabajar en otras cosas 
 </pre>
 Este comando guarda el trabajo actual del Staging en una lista diseñada para ser temporal llamada Stash, para que pueda ser recuperado en el futuro.
 
+Podemos poner un mensaje en el stash, para asi diferenciarlos en git stash list por si tenemos varios elementos en el stash
+<pre>
+<code>$ git stash save "mensaje"</code>
+</pre>
 
+## Recuperar Stash
+Para recuperar los últimos cambios desde el stash a tu staging area utiliza el comando
+<pre>
+<code>$ git stash pop</code>
+</pre>
 
+Para aplicar los cambios de un stash específico y eliminarlo del stash
+<pre>
+<code>$ git stash pop 'stash@{numero}'</code>
+</pre>
+
+para ver el numero del stash puede verse con 
+<pre>
+<code>$ git stash list</code>
+</pre>
+
+Para retomar los cambios de una posición específica del Stash puedes utilizar el comando
+<pre>
+<code>$ git stash apply 'stash@{numero}'</code>
+</pre>
+
+## Crear una rama con el stash
+
+Para crear una rama y aplicar el stash más reciente podemos utilizar el comando
+<pre>
+<code>$ git stash branch nombre-rama</code>
+</pre>
+
+Si deseas crear una rama y aplicar un stash específico (obtenido desde git stash list) puedes utilizar el comando
+<pre>
+<code>$ git stash branch nombre_de_rama 'stash@{numero}'</code>
+</pre>
+
+## Eliminar elementos del stash
+
+Para eliminar los cambios más recientes dentro del stash (el elemento 0), podemos utilizar el comando
+<pre>
+<code>$ git stash drop</code>
+</pre>
+
+Pero si, en cambio, conoces el índice del stash que quieres borrar (mediante git stash list) puedes utilizar el comando
+<pre>
+<code>$ git stash drop 'stash@{numero}'</code>
+</pre>
+
+Si, en cambio, deseas eliminar todos los elementos del stash, puedes utilizar
+<pre>
+<code>$ git stash clear</code>
+</pre>
+
+# Git Clean
+
+Mientras estamos trabajando en un repositorio podemos añadir archivos a él, que realmente no forma parte de nuestro directorio de trabajo, archivos que no se deberían de agregar al repositorio remoto.
+
+El comando clean actúa en archivos sin seguimiento, este tipo de archivos son aquellos que se encuentran en el directorio de trabajo, pero que aún no se han añadido al índice de seguimiento de repositorio con el comando add.
+
+<pre>
+<code>$ git clean</code>
+</pre>
+
+La ejecución del comando predeterminado puede producir un error. La configuración global de Git obliga a usar la opción **force** con el comando para que sea efectivo. Se trata de un importante mecanismo de seguridad ya que este comando no se puede deshacer.
+
+## Revisar que archivos no tienen seguimiento
+<pre>
+<code>$ git clean --dry-run</code>
+</pre>
+
+## Eliminar los archivos listados de no seguimiento
+<pre>
+<code>$ git clean -f</code>
+</pre>
+
+# Git Cherry-pick
+
+Es un comando que permite tomar uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad en la rama master sin necesidad de hacer un merge.
 
 
 
