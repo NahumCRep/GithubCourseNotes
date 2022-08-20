@@ -23,7 +23,7 @@ para poder ver estos datos entre otros se utiliza el comando
 
  - **Cambiar nombre de la rama de Master a Main**
 <pre>
-  <code>$ git banch -M main</code>  
+<code>$ git banch -M main</code>  
 </pre>
 - **Agregar ruta remota del repositorio**
 <pre>
@@ -34,6 +34,11 @@ para poder ver estos datos entre otros se utiliza el comando
 <pre>
 <code>$ git remote add origin https://github.com/ExampleRep/Example.git
 $ git banch -M main</code>
+</pre>
+
+# Ver url del repositorio origen
+<pre>
+<code>$ git remote -v</code>
 </pre>
 
 # Comandos sobre un archivo
@@ -148,7 +153,6 @@ Pasar los cambios de una rama a otra
 
 #
 #
-#
 # Configurar SSH
 
 ## Generar llave SSH
@@ -178,6 +182,58 @@ Supuniendo que se guardo en la ruta home del computador podemos usar
 <code>~ -> este contiene la ruta del home
 ssh-add ~/.ssh/id_rsa</code>
 </pre>
+
+# Conectar repositorio con SSH
+
+## Cambiar origin del repo
+<pre>
+<code>$ git remote set-url origin ssh-url</code>
+</pre>
+
+# Alias
+
+Nota: en la terminal de VsCode puede que presente error. En cambio en git bash funciona sin problema
+
+<pre>
+<code>$ alias nombre="comando"</code>
+</pre>
+Ejemplo
+
+<pre>
+<code>$ alias superlog="git log --graph --decorate --oneline"</code>
+</pre>
+para utilizarlo solamente se llama al alias ej.
+<pre>
+<code>$ superlog</code>
+</pre>
+
+# Tags
+
+<pre>
+<code>$ git tag -a nombre-del-tag commit-ID</code>
+</pre>
+Tambien puede escribir un mensaje
+<pre>
+<code>$ git tag -a nombre-del-tag -m "mensaje" commit-ID</code>
+</pre>
+
+## Ver Tags
+<pre><code>$ git tag</code></pre>
+otra forma con mas detalles
+<pre><code>$ git show-ref --tags</code></pre>
+
+## Borrar tag
+<pre><code>$ git tag -d nombre-del-tag</code></pre>
+
+## Publicar tag en el repositorio remoto
+<pre><code>$ git push origin --tags</code></pre>
+
+## Borrar tag del repositorio remoto
+<pre><code>$ git tag -d nombre-del-tag
+$ git push origin :refs/tags/nombre-del-tag</code></pre>
+
+
+
 
 
 
