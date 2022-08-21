@@ -1,17 +1,55 @@
 # Notas del Curso de Github
 
+Estas son anotaciones y textos que obtuve de un curso de Git y Github para establecer una guia personal, por lo que los comandos no cuentan con toda la informacion y opciones que cada uno contiene. Para ver los comandos a mayor detallo puede revisar la [documentacion oficial](https://git-scm.com/doc).
+
 Índice
-- [Inicializar Repositorio](#Inicializar-Repositorio)
-- [Confinguracion](#Confinguracion)
-- [Repositorio Remoto]( #Repositorio-Remoto)
-- [Estados de un archivo](#Estados-de-un-archivo)
-- [Staging Area](#Staging-Area)
-- [Git Commit](#Git-Commit)
-- [Git rm](#Git-rm)
+- [Notas del Curso de Github](#notas-del-curso-de-github)
+- [Inicializar Repositorio](#inicializar-repositorio)
+- [Confinguracion](#confinguracion)
+- [Repositorio Remoto](#repositorio-remoto)
+- [**Estados de un archivo**](#estados-de-un-archivo)
+- [**Staging Area**](#staging-area)
+- [**Git Commit**](#git-commit)
+- [**Git rm**](#git-rm)
   - [rm --cached](#rm---cached)
   - [rm --force](#rm---force)
-- [Git Diff](#Git-Diff)
-
+- [**Git Diff**](#git-diff)
+- [**Git Checkout**](#git-checkout)
+- [**Git Reset**](#git-reset)
+- [**Branches (Ramas)**](#branches-ramas)
+  - [Crear rama](#crear-rama)
+  - [Eliminar rama](#eliminar-rama)
+  - [Ver Ramas](#ver-ramas)
+  - [Git Merge](#git-merge)
+- [**Configurar SSH**](#configurar-ssh)
+  - [Generar llave SSH](#generar-llave-ssh)
+  - [Encender el servidor de llaves SSH de tu pc (windows y linux)](#encender-el-servidor-de-llaves-ssh-de-tu-pc-windows-y-linux)
+  - [Añadir tu llave SSH a este servidor](#añadir-tu-llave-ssh-a-este-servidor)
+  - [Conectar repositorio con SSH](#conectar-repositorio-con-ssh)
+- [**Alias**](#alias)
+- [Tags](#tags)
+  - [Ver Tags](#ver-tags)
+  - [Borrar Tag](#borrar-tag)
+  - [Publicar Tag en el repositorio remoto](#publicar-tag-en-el-repositorio-remoto)
+  - [Borrar Tag del repositorio remoto](#borrar-tag-del-repositorio-remoto)
+- [**Forks (Github)**](#forks-github)
+- [**Añadir otra fuente remota**](#añadir-otra-fuente-remota)
+- [**Rebase**](#rebase)
+- [**Git Stash**](#git-stash)
+  - [Recuperar Stash](#recuperar-stash)
+  - [Crear una rama con el stash](#crear-una-rama-con-el-stash)
+  - [Eliminar elementos del stash](#eliminar-elementos-del-stash)
+- [Git Clean](#git-clean)
+  - [Revisar que archivos no tienen seguimiento](#revisar-que-archivos-no-tienen-seguimiento)
+  - [Eliminar los archivos listados de no seguimiento](#eliminar-los-archivos-listados-de-no-seguimiento)
+- [**Git Cherry-pick**](#git-cherry-pick)
+- [**Git Log**](#git-log)
+- [**Git Reset y Reflog**](#git-reset-y-reflog)
+- [**Git Ammend**](#git-ammend)
+- [**Git con Grep y log**](#git-con-grep-y-log)
+  - [Buscar en commits](#buscar-en-commits)
+- [**Comandos y recursos colaborativos en Git y GitHub**](#comandos-y-recursos-colaborativos-en-git-y-github)
+  
 
 # Inicializar Repositorio
 
@@ -33,7 +71,6 @@ para poder ver estos datos entre otros se utiliza el comando
 <code>$ git config -l</code>
 </pre>
 
-
 # Repositorio Remoto
 
 Cambiar nombre de la rama de Master a Main
@@ -54,6 +91,11 @@ $ git banch -M main</code>
 Ver origen del Respositorio
 <pre>
 <code>$ git remote -v</code>
+</pre>
+
+Obtener el repositorio remoto incluyendo la historia no relacionada
+<pre>
+<code>$ git pull origin main --allow-unrelated-histories</code>
 </pre>
 
 
@@ -98,33 +140,33 @@ El comando **git rm** quita un archivo o grupo de archivos de un repositorio de 
 <code>$ git rm file.ext</code>
 </pre>
 
-## **rm --cached**
+## rm --cached
 El indicador Git rm –-cached Elimina los archivos de nuestro repositorio local y del área de staging, pero los mantiene en nuestro disco duro. Básicamente le dice a Git que deje de trackear el historial de cambios de estos archivos, por lo que pasaran a un estado **untracked**.
 <pre>
 <code>$ git rm --cached file.ext</code>
 </pre>
 
-## **rm --force**
+## rm --force
 
 Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
 <pre>
 <code>$ git rm --force file.ext</code>
 </pre>
 
-# Git Diff
+# **Git Diff**
 Enumera los cambios entre el directorio de trabajo actual y el área de ensayo.
 <pre>
 <code>$ git diff commit-ID-1 commit-ID-2</code>
 </pre>
 
-# Git Checkout
+# **Git Checkout**
 Nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. 
 <pre>
 <code>$ git checkout commit-ID file.ext</code>
 </pre>
 Esta también es la forma de crear ramas y movernos entre ellas.
 
-## **Git Reset**
+# **Git Reset**
 Nos permite volver en el tiempo y ademas borrar los cambios que hicimos después de ese commit.
 
 Hay dos formas de usar git reset: con el argumento 
@@ -194,14 +236,9 @@ Pasar los cambios de una rama a otra
 <code>$ git rama-destino merge rama-con-cambios</code>
 </pre>
 
-# 
-<pre>
-<code>$ git pull origin main --allow-unrelated-histories</code>
-</pre>
-
 #
 #
-# Configurar SSH
+# **Configurar SSH**
 
 ## Generar llave SSH
 
@@ -214,13 +251,13 @@ donde:
 - **rsa** : un antiguo algoritmo basado en la dificultad de factorizar grandes números. Se recomienda un tamaño de clave de al menos 2048 bits para RSA; 4096 bits es mejor.
 - **-C**  : para establecer el correo electronico
 
-## Encender el “servidor” de llaves SSH de tu computadora (windows y linux)
+## Encender el servidor de llaves SSH de tu pc (windows y linux)
 
 <pre>
 <code>eval $(ssh-agent -s)</code>
 </pre>
 
-## Añadir tu llave SSH a este “servidor”
+## Añadir tu llave SSH a este servidor
 
 <pre>
 <code>ssh-add ruta-donde-guardaste-tu-llave-privada</code>
@@ -231,14 +268,14 @@ Supuniendo que se guardo en la ruta home del computador podemos usar
 ssh-add ~/.ssh/id_rsa</code>
 </pre>
 
-# Conectar repositorio con SSH
+## Conectar repositorio con SSH
 
-## Cambiar origin del repo
+Si ya se tiene una conexion con http para cambiar el origin del repositorio a ssh se utiliza el siguiente comando
 <pre>
 <code>$ git remote set-url origin ssh-url</code>
 </pre>
 
-# Alias
+# **Alias**
 
 Nota: en la terminal de VsCode puede que presente error. En cambio en git bash funciona sin problema
 
@@ -273,21 +310,21 @@ Tambien puede escribir un mensaje
 otra forma con mas detalles
 <pre><code>$ git show-ref --tags</code></pre>
 
-## Borrar tag
+## Borrar Tag
 <pre><code>$ git tag -d nombre-del-tag</code></pre>
 
-## Publicar tag en el repositorio remoto
+## Publicar Tag en el repositorio remoto
 <pre><code>$ git push origin --tags</code></pre>
 
-## Borrar tag del repositorio remoto
+## Borrar Tag del repositorio remoto
 <pre><code>$ git tag -d nombre-del-tag
 $ git push origin :refs/tags/nombre-del-tag</code></pre>
 
-# Forks (Github)
+# **Forks (Github)**
 
 Los forks o bifurcaciones son una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub. Este repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio). En pocas palabras, lo podremos utilizar como un nuevo repositorio git cualquiera
 
-# Añadir otra fuente remota
+# **Añadir otra fuente remota**
 
 <pre>
 <code>$ git remote add nombre-cualquiera URL-Repositorio</code>
@@ -299,7 +336,7 @@ por ejemplo
 
 Con esto podriamos tener un repositorio Fork como **origin** y el repositorio original en **upstream** para obtener los cambios que este reciba para que nuestro Fork no se quede atras. O no necesariamente con repositorios Fork, sino donde se requiera tener mas de una fuente remota.
 
-# Rebase
+# **Rebase**
 
 Rebase es el proceso de mover o combinar una secuencia de confirmaciones en una nueva confirmación base. Reescribe la historia del repositorio, cambia la historia de donde comenzó la rama y solo debe ser usado de manera local ya que hacerlo a un repositorio remoto no se considera buena practica.
 
@@ -319,9 +356,9 @@ $ git rebase feature</code>
 
 A nivel de historia del log la rama feature no exitió, por eso no es buena practica en repositorios remotos ya que es mejor que la historia quede intacta.
 
-# Git Stash
+# **Git Stash**
 
-l stashed nos sirve para guardar cambios para después, Es una lista de estados que nos guarda algunos cambios que hicimos en Staging para poder cambiar de rama sin perder el trabajo que todavía no guardamos en un commit
+El stashed nos sirve para guardar cambios para después, Es una lista de estados que nos guarda algunos cambios que hicimos en Staging para poder cambiar de rama sin perder el trabajo que todavía no guardamos en un commit
 
 Ésto es especialmente útil porque hay veces que no se permite cambiar de rama, ésto porque tenemos cambios sin guardar, no siempre es un cambio lo suficientemente bueno como para hacer un commit, pero no queremos perder ese código en el que estuvimos trabajando.
 
@@ -409,20 +446,20 @@ La ejecución del comando predeterminado puede producir un error. La configuraci
 <code>$ git clean -f</code>
 </pre>
 
-# Git Cherry-pick
+# **Git Cherry-pick**
 
 Es un comando que permite tomar uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad en la rama master sin necesidad de hacer un merge.
 <pre>
 <code>$ cherry-pick commit-ID</code>
 </pre>
 
-# Git Log
+# **Git Log**
 Muestra el registro de commits realizados 
 <pre>
 <code>$ git log</code>
 </pre>
 
-# Git Reset y Reflog
+# **Git Reset y Reflog**
 
 Git guarda todos los cambios aunque decidas borrarlos, al borrar un cambio lo que estás haciendo sólo es actualizar la punta del branch, para gestionar éstas puntas existe un mecanismo llamado registros de referencia o reflogs
 <pre>
@@ -437,7 +474,7 @@ puede user
 en la seccion de [reset](#Git-Reset) se muestran sus significados
 
 
-# Git Ammend
+# **Git Ammend**
 
 Remendar un commit con amend puede modificar el commit más reciente (enmendar) en la misma rama. 
 
@@ -453,7 +490,7 @@ En caso de no querer editar el mensaje puede usarse:
 <code>$ git commit --amend --no-edit</code>
 </pre>
 
-# Git con Grep y log
+# **Git con Grep y log**
 
 A medida que nuestro proyecto en Git se hace más grande, vamos a querer buscar ciertas cosas.
 
@@ -475,7 +512,7 @@ Si queremos buscar cuántas veces utilizamos un atributo de HTML lo hacemos con:
 ## Buscar en commits
 <pre><code>$ git log valor-a-buscar</code></pre> 
 
-# Comandos y recursos colaborativos en Git y GitHub
+# **Comandos y recursos colaborativos en Git y GitHub**
 
 A continuación veremos una lista de comandos colaborativos para facilitar el trabajo remoto en GitHub:
 
@@ -501,6 +538,7 @@ se muestran todas las ramas remotas.
 <pre><code>$ git branch -r</code></pre> 
 
 se muestran todas las ramas, tanto locales como remotas.
+<pre><code>$ git branch -a</code></pre> 
 
 
  
