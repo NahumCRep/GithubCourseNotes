@@ -3,52 +3,53 @@
 Estas son anotaciones y textos que obtuve de un curso de Git y Github para establecer una guia personal, por lo que los comandos no cuentan con toda la informacion y opciones que cada uno contiene. Para ver los comandos a mayor detallo puede revisar la [documentacion oficial](https://git-scm.com/doc).
 
 Índice
+
 - [Notas del Curso de Github](#notas-del-curso-de-github)
 - [Inicializar Repositorio](#inicializar-repositorio)
 - [Confinguracion](#confinguracion)
 - [Repositorio Remoto](#repositorio-remoto)
-- [**Estados de un archivo**](#estados-de-un-archivo)
-- [**Staging Area**](#staging-area)
-- [**Git Commit**](#git-commit)
-- [**Git rm**](#git-rm)
+- [Estados de un archivo](#estados-de-un-archivo)
+- [Staging Area](#staging-area)
+- [Git Commit](#git-commit)
+- [Git rm](#git-rm)
   - [rm --cached](#rm---cached)
   - [rm --force](#rm---force)
-- [**Git Diff**](#git-diff)
-- [**Git Checkout**](#git-checkout)
-- [**Git Reset**](#git-reset)
-- [**Branches (Ramas)**](#branches-ramas)
+- [Git Diff](#git-diff)
+- [Git Checkout](#git-checkout)
+- [Git Reset](#git-reset)
+- [Branches (Ramas)](#branches-ramas)
   - [Crear rama](#crear-rama)
   - [Eliminar rama](#eliminar-rama)
   - [Ver Ramas](#ver-ramas)
   - [Git Merge](#git-merge)
-- [**Configurar SSH**](#configurar-ssh)
+- [Configurar SSH](#configurar-ssh)
   - [Generar llave SSH](#generar-llave-ssh)
   - [Encender el servidor de llaves SSH de tu pc (windows y linux)](#encender-el-servidor-de-llaves-ssh-de-tu-pc-windows-y-linux)
   - [Añadir tu llave SSH a este servidor](#añadir-tu-llave-ssh-a-este-servidor)
   - [Conectar repositorio con SSH](#conectar-repositorio-con-ssh)
-- [**Alias**](#alias)
+- [Alias](#alias)
 - [Tags](#tags)
   - [Ver Tags](#ver-tags)
   - [Borrar Tag](#borrar-tag)
   - [Publicar Tag en el repositorio remoto](#publicar-tag-en-el-repositorio-remoto)
   - [Borrar Tag del repositorio remoto](#borrar-tag-del-repositorio-remoto)
-- [**Forks (Github)**](#forks-github)
-- [**Añadir otra fuente remota**](#añadir-otra-fuente-remota)
-- [**Rebase**](#rebase)
-- [**Git Stash**](#git-stash)
+- [Forks (Github)](#forks-github)
+- [Añadir otra fuente remota](#añadir-otra-fuente-remota)
+- [Rebase](#rebase)
+- [Git Stash](#git-stash)
   - [Recuperar Stash](#recuperar-stash)
   - [Crear una rama con el stash](#crear-una-rama-con-el-stash)
   - [Eliminar elementos del stash](#eliminar-elementos-del-stash)
 - [Git Clean](#git-clean)
   - [Revisar que archivos no tienen seguimiento](#revisar-que-archivos-no-tienen-seguimiento)
   - [Eliminar los archivos listados de no seguimiento](#eliminar-los-archivos-listados-de-no-seguimiento)
-- [**Git Cherry-pick**](#git-cherry-pick)
-- [**Git Log**](#git-log)
-- [**Git Reset y Reflog**](#git-reset-y-reflog)
-- [**Git Ammend**](#git-ammend)
-- [**Git con Grep y log**](#git-con-grep-y-log)
+- [Git Cherry-pick](#git-cherry-pick)
+- [Git Log](#git-log)
+- [Git Reset y Reflog](#git-reset-y-reflog)
+- [Git Ammend](#git-ammend)
+- [Git con Grep y log](#git-con-grep-y-log)
   - [Buscar en commits](#buscar-en-commits)
-- [**Comandos y recursos colaborativos en Git y GitHub**](#comandos-y-recursos-colaborativos-en-git-y-github)
+- [Comandos y recursos colaborativos en Git y GitHub](#comandos-y-recursos-colaborativos-en-git-y-github)
   
 
 # Inicializar Repositorio
@@ -59,7 +60,7 @@ Estas son anotaciones y textos que obtuve de un curso de Git y Github para estab
 
 # Confinguracion
 
-**Establecer nombre de usuario y correo**
+Establecer nombre de usuario y correo
 
 <pre>
 <code>$ git config --global user.name "Example Name"
@@ -99,14 +100,14 @@ Obtener el repositorio remoto incluyendo la historia no relacionada
 </pre>
 
 
-# **Estados de un archivo**
+# Estados de un archivo
 Los archivos tienen dos estados:
 - Untracked (sin rastrear)
 - Tracked (rastreado)
 
 Para establecer un archivo al estado **tracked** se utiliza el comando **Add** esto tambien agrega el archivo al stagin area.  
 
-# **Staging Area**
+# Staging Area
 El staging es el lugar donde se guardan temporalmente los cambios, para luego ser llevados definitivamente al repositorio
 
 Agregar archivo al stagin area
@@ -118,7 +119,7 @@ Agregar todos los archivos
 <code>$ git add .</code>
 </pre>
 
-# **Git Commit** 
+# Git Commit 
 
 Luego de agregar el archivo al stagin area debemos agregarlo al repositorio para eso utilzando **git commit**
 
@@ -134,7 +135,7 @@ Si queremos agregar el archivo y a la vez hacer commit utilizamos
 
 _Nota: **-am** funciona con archivos **tracked** (rastreados) en caso de ser un archivo nuevo tiene que utilizarse el comand **git add**_
 
-# **Git rm**
+# Git rm
 El comando **git rm** quita un archivo o grupo de archivos de un repositorio de Git. Se elimina un archivo tanto del equipo como del repositorio de Git.
 <pre>
 <code>$ git rm file.ext</code>
@@ -153,20 +154,20 @@ Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo qu
 <code>$ git rm --force file.ext</code>
 </pre>
 
-# **Git Diff**
+# Git Diff
 Enumera los cambios entre el directorio de trabajo actual y el área de ensayo.
 <pre>
 <code>$ git diff commit-ID-1 commit-ID-2</code>
 </pre>
 
-# **Git Checkout**
+# Git Checkout
 Nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. 
 <pre>
 <code>$ git checkout commit-ID file.ext</code>
 </pre>
 Esta también es la forma de crear ramas y movernos entre ellas.
 
-# **Git Reset**
+# Git Reset
 Nos permite volver en el tiempo y ademas borrar los cambios que hicimos después de ese commit.
 
 Hay dos formas de usar git reset: con el argumento 
@@ -193,7 +194,7 @@ Para moverse dos commits anteriores a HEAD con:
 <code>$ git reset HEAD~2</code>
 </pre>
 
-# **Branches (Ramas)**
+# Branches (Ramas)
 
 ## Crear rama
 
@@ -238,7 +239,7 @@ Pasar los cambios de una rama a otra
 
 #
 #
-# **Configurar SSH**
+# Configurar SSH
 
 ## Generar llave SSH
 
@@ -275,7 +276,7 @@ Si ya se tiene una conexion con http para cambiar el origin del repositorio a ss
 <code>$ git remote set-url origin ssh-url</code>
 </pre>
 
-# **Alias**
+# Alias
 
 Nota: en la terminal de VsCode puede que presente error. En cambio en git bash funciona sin problema
 
@@ -320,11 +321,11 @@ otra forma con mas detalles
 <pre><code>$ git tag -d nombre-del-tag
 $ git push origin :refs/tags/nombre-del-tag</code></pre>
 
-# **Forks (Github)**
+# Forks (Github)
 
 Los forks o bifurcaciones son una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub. Este repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio). En pocas palabras, lo podremos utilizar como un nuevo repositorio git cualquiera
 
-# **Añadir otra fuente remota**
+# Añadir otra fuente remota
 
 <pre>
 <code>$ git remote add nombre-cualquiera URL-Repositorio</code>
@@ -336,7 +337,7 @@ por ejemplo
 
 Con esto podriamos tener un repositorio Fork como **origin** y el repositorio original en **upstream** para obtener los cambios que este reciba para que nuestro Fork no se quede atras. O no necesariamente con repositorios Fork, sino donde se requiera tener mas de una fuente remota.
 
-# **Rebase**
+# Rebase
 
 Rebase es el proceso de mover o combinar una secuencia de confirmaciones en una nueva confirmación base. Reescribe la historia del repositorio, cambia la historia de donde comenzó la rama y solo debe ser usado de manera local ya que hacerlo a un repositorio remoto no se considera buena practica.
 
@@ -356,7 +357,7 @@ $ git rebase feature</code>
 
 A nivel de historia del log la rama feature no exitió, por eso no es buena practica en repositorios remotos ya que es mejor que la historia quede intacta.
 
-# **Git Stash**
+# Git Stash
 
 El stashed nos sirve para guardar cambios para después, Es una lista de estados que nos guarda algunos cambios que hicimos en Staging para poder cambiar de rama sin perder el trabajo que todavía no guardamos en un commit
 
@@ -446,20 +447,20 @@ La ejecución del comando predeterminado puede producir un error. La configuraci
 <code>$ git clean -f</code>
 </pre>
 
-# **Git Cherry-pick**
+# Git Cherry-pick
 
 Es un comando que permite tomar uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad en la rama master sin necesidad de hacer un merge.
 <pre>
 <code>$ cherry-pick commit-ID</code>
 </pre>
 
-# **Git Log**
+# Git Log
 Muestra el registro de commits realizados 
 <pre>
 <code>$ git log</code>
 </pre>
 
-# **Git Reset y Reflog**
+# Git Reset y Reflog
 
 Git guarda todos los cambios aunque decidas borrarlos, al borrar un cambio lo que estás haciendo sólo es actualizar la punta del branch, para gestionar éstas puntas existe un mecanismo llamado registros de referencia o reflogs
 <pre>
@@ -474,7 +475,7 @@ puede user
 en la seccion de [reset](#Git-Reset) se muestran sus significados
 
 
-# **Git Ammend**
+# Git Ammend
 
 Remendar un commit con amend puede modificar el commit más reciente (enmendar) en la misma rama. 
 
@@ -490,7 +491,7 @@ En caso de no querer editar el mensaje puede usarse:
 <code>$ git commit --amend --no-edit</code>
 </pre>
 
-# **Git con Grep y log**
+# Git con Grep y log
 
 A medida que nuestro proyecto en Git se hace más grande, vamos a querer buscar ciertas cosas.
 
@@ -512,7 +513,7 @@ Si queremos buscar cuántas veces utilizamos un atributo de HTML lo hacemos con:
 ## Buscar en commits
 <pre><code>$ git log valor-a-buscar</code></pre> 
 
-# **Comandos y recursos colaborativos en Git y GitHub**
+# Comandos y recursos colaborativos en Git y GitHub
 
 A continuación veremos una lista de comandos colaborativos para facilitar el trabajo remoto en GitHub:
 
