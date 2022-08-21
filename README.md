@@ -1,10 +1,8 @@
-# Notas del Curso de Github
+Notas del Curso de Github
 
 Estas son anotaciones y textos que obtuve de un curso de Git y Github para establecer una guia personal, por lo que los comandos no cuentan con toda la informacion y opciones que cada uno contiene. Para ver los comandos a mayor detallo puede revisar la [documentacion oficial](https://git-scm.com/doc).
 
 Índice
-
-- [Notas del Curso de Github](#notas-del-curso-de-github)
 - [Inicializar Repositorio](#inicializar-repositorio)
 - [Confinguracion](#confinguracion)
 - [Repositorio Remoto](#repositorio-remoto)
@@ -50,7 +48,6 @@ Estas son anotaciones y textos que obtuve de un curso de Git y Github para estab
 - [Git con Grep y log](#git-con-grep-y-log)
   - [Buscar en commits](#buscar-en-commits)
 - [Comandos y recursos colaborativos en Git y GitHub](#comandos-y-recursos-colaborativos-en-git-y-github)
-  
 
 # Inicializar Repositorio
 
