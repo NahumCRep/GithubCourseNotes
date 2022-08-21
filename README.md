@@ -3,10 +3,15 @@
 Índice
 - [Inicializar Repositorio](#Inicializar-Repositorio)
 - [Confinguracion](#Confinguracion)
-- [Establecer Repositorio Remoto]( #Establecer-Repositorio-Remoto)
-- [Ver origen del Respositorio](#Ver-origen-del-Respositorio)
-- [Comandos sobre un archivo](#Comandos-sobre-un-archivo)
-  - [Estados de un archivo](#Estados-de-un-archivo)
+- [Repositorio Remoto]( #Repositorio-Remoto)
+- [Estados de un archivo](#Estados-de-un-archivo)
+- [Staging Area](#Staging-Area)
+- [Git Commit](#Git-Commit)
+- [Git rm](#Git-rm)
+  - [rm --cached](#rm---cached)
+  - [rm --force](#rm---force)
+- [Git Diff](#Git-Diff)
+
 
 # Inicializar Repositorio
 
@@ -29,38 +34,37 @@ para poder ver estos datos entre otros se utiliza el comando
 </pre>
 
 
-# Establecer Repositorio Remoto
+# Repositorio Remoto
 
- - **Cambiar nombre de la rama de Master a Main**
+Cambiar nombre de la rama de Master a Main
 <pre>
 <code>$ git banch -M main</code>  
 </pre>
-- **Agregar ruta remota del repositorio**
+Agregar ruta remota del repositorio
 <pre>
  <code>$ git remote add origin https://github.com/ExampleRep/Example.git</code>
 </pre>
 
-**Cuando el repositorio ya existe pude ser el siguiente orden**
+Cuando el repositorio ya existe pude ser el siguiente orden
 <pre>
 <code>$ git remote add origin https://github.com/ExampleRep/Example.git
 $ git banch -M main</code>
 </pre>
 
-# Ver origen del Respositorio
+Ver origen del Respositorio
 <pre>
 <code>$ git remote -v</code>
 </pre>
 
-# Comandos sobre un archivo
 
-## **Estados de un archivo**
+# **Estados de un archivo**
 Los archivos tienen dos estados:
 - Untracked (sin rastrear)
 - Tracked (rastreado)
 
 Para establecer un archivo al estado **tracked** se utiliza el comando **Add** esto tambien agrega el archivo al stagin area.  
 
-## **Staging Area**
+# **Staging Area**
 El staging es el lugar donde se guardan temporalmente los cambios, para luego ser llevados definitivamente al repositorio
 
 Agregar archivo al stagin area
@@ -72,7 +76,7 @@ Agregar todos los archivos
 <code>$ git add .</code>
 </pre>
 
-# Commit 
+# **Git Commit** 
 
 Luego de agregar el archivo al stagin area debemos agregarlo al repositorio para eso utilzando **git commit**
 
@@ -88,38 +92,32 @@ Si queremos agregar el archivo y a la vez hacer commit utilizamos
 
 _Nota: **-am** funciona con archivos **tracked** (rastreados) en caso de ser un archivo nuevo tiene que utilizarse el comand **git add**_
 
-## Comando **git rm**
+# **Git rm**
 El comando **git rm** quita un archivo o grupo de archivos de un repositorio de Git. Se elimina un archivo tanto del equipo como del repositorio de Git.
 <pre>
 <code>$ git rm file.ext</code>
 </pre>
 
-## rm --cached
+## **rm --cached**
 El indicador Git rm –-cached Elimina los archivos de nuestro repositorio local y del área de staging, pero los mantiene en nuestro disco duro. Básicamente le dice a Git que deje de trackear el historial de cambios de estos archivos, por lo que pasaran a un estado **untracked**.
 <pre>
 <code>$ git rm --cached file.ext</code>
 </pre>
 
-## rm --force
+## **rm --force**
 
 Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
 <pre>
 <code>$ git rm --force file.ext</code>
 </pre>
 
-
-### Ver historial de un archivo
-<pre>
-<code>$ git log archivo.ext</code>
-</pre>
-
-### Ver la diferencia entre dos versiones de un archivo
-
+# Git Diff
+Enumera los cambios entre el directorio de trabajo actual y el área de ensayo.
 <pre>
 <code>$ git diff commit-ID-1 commit-ID-2</code>
 </pre>
 
-## Git Checkout
+# Git Checkout
 Nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. 
 <pre>
 <code>$ git checkout commit-ID file.ext</code>
@@ -416,6 +414,12 @@ La ejecución del comando predeterminado puede producir un error. La configuraci
 Es un comando que permite tomar uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad en la rama master sin necesidad de hacer un merge.
 <pre>
 <code>$ cherry-pick commit-ID</code>
+</pre>
+
+# Git Log
+Muestra el registro de commits realizados 
+<pre>
+<code>$ git log</code>
 </pre>
 
 # Git Reset y Reflog
