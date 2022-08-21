@@ -1,4 +1,4 @@
-Notas del Curso de Github
+<h1> Notas del Curso de Github</h1>
 
 Estas son anotaciones y textos que obtuve de un curso de Git y Github para establecer una guia personal, por lo que los comandos no cuentan con toda la informacion y opciones que cada uno contiene. Para ver los comandos a mayor detallo puede revisar la [documentacion oficial](https://git-scm.com/doc).
 
