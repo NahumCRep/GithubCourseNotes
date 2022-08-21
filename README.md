@@ -181,6 +181,14 @@ Eliminar rama del repositorio remoto
 <code>$ git push origin :nombre-rama</code>
 </pre>
 
+## Ver Ramas
+Ver ramas del repositorio local
+<pre><code>$ git branch</code></pre>
+Ver ramas del repositorio remoto
+<pre><code>$ git branch -r</code></pre>
+Ver todas las ramas
+<pre><code>$ git branch -a</code></pre>
+
 ## Git Merge
 
 Pasar los cambios de una rama a otra
@@ -248,6 +256,9 @@ para utilizarlo solamente se llama al alias ej.
 <pre>
 <code>$ superlog</code>
 </pre>
+
+Alias en Git
+<pre><code>$ git config --global alias.alias "comando"</code></pre>
 
 # Tags
 
@@ -407,10 +418,88 @@ Es un comando que permite tomar uno o varios commits de otra rama sin tener que 
 <code>$ cherry-pick commit-ID</code>
 </pre>
 
+# Git Reset y Reflog
+
+Git guarda todos los cambios aunque decidas borrarlos, al borrar un cambio lo que estás haciendo sólo es actualizar la punta del branch, para gestionar éstas puntas existe un mecanismo llamado registros de referencia o reflogs
+<pre>
+<code>$ git reflog
+$ git reset --hard HASH-del-Commit</code>
+</pre>
+
+puede user 
+- --hard
+- --soft
+
+en la seccion de [reset](#Git-Reset) se muestran sus significados
 
 
+# Git Ammend
+
+Remendar un commit con amend puede modificar el commit más reciente (enmendar) en la misma rama. 
+
+Este comando sirve para agregar archivos nuevos o actualizar el commit anterior y no generar commits innecesarios. También es una forma sencilla de editar o agregar comentarios al commit anterior porque abrirá la consola para editar este commit anterior.
+
+<pre>
+<code>$ git add file.ext
+$ git commit --amend</code>
+</pre>
+
+En caso de no querer editar el mensaje puede usarse:
+<pre>
+<code>$ git commit --amend --no-edit</code>
+</pre>
+
+# Git con Grep y log
+
+A medida que nuestro proyecto en Git se hace más grande, vamos a querer buscar ciertas cosas.
+
+Por ejemplo: ¿cuántas veces en nuestro proyecto utilizamos la palabra color?
+
+Para buscar, empleamos el comando 
+<pre><code>$ git grep color</code></pre> 
+y nos buscará en todo el proyecto los archivos en donde está la palabra color.
+
+Con el siguiente comando nos saldrá un output el cual nos dirá en qué línea está lo que estamos buscando.
+<pre><code>$ git grep -n color</code></pre> 
 
 
+Con **-c** nos saldrá un output el cual nos dirá cuántas veces se repite esa palabra y en qué archivo.
+<pre><code>$ git grep -c color</code></pre> 
+
+Si queremos buscar cuántas veces utilizamos un atributo de HTML lo hacemos con:
+
+## Buscar en commits
+<pre><code>$ git log valor-a-buscar</code></pre> 
+
+# Comandos y recursos colaborativos en Git y GitHub
+
+A continuación veremos una lista de comandos colaborativos para facilitar el trabajo remoto en GitHub:
+
+muestra cuantos commit han hecho cada miembro del equipo.
+<pre><code>$ git shortlog -sn</code></pre> 
+
+muestra cuantos commit han hecho cada miembro del equipo, hasta los que han sido eliminados.
+<pre><code>$ git shortlog -sn --all</code></pre>
+
+muestra cuantos commit ha hecho cada miembro, quitando los eliminados sin los merges.
+<pre><code>$ git shortlog -sn --all --no-merge</code></pre> 
+
+muestra quien hizo cada cosa línea por línea.
+<pre><code>$ git blame ARCHIVO</code></pre> 
+
+muestra como funciona el comando.
+<pre><code>$ git COMANDO --help</code></pre>
+
+muestra quien hizo cada cosa línea por línea, indicándole desde qué línea ver. Ejemplo -L35,50.
+<pre><code>$ git blame ARCHIVO -Llinea_inicial,linea_final</code></pre> 
+
+se muestran todas las ramas remotas.
+<pre><code>$ git branch -r</code></pre> 
+
+se muestran todas las ramas, tanto locales como remotas.
+
+
+ 
 
 
 
